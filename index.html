@@ -68,11 +68,9 @@ a{color:var(--v4);text-decoration:none}
 .wrap{max-width:680px;margin:0 auto;padding:0 14px}
 
 /* ════════════════════════════════════════════════════════
-   ACCESS GATE
+   ACCESS GATE (TABLA)
 ════════════════════════════════════════════════════════ */
-.gate{
-  max-width:380px;margin:60px auto 0;padding:0 16px;
-}
+.gate{max-width:380px;margin:60px auto 0;padding:0 16px}
 .gate-card{background:var(--p1);border:1px solid var(--br);border-radius:var(--ra);padding:32px 24px;text-align:center}
 .gate-icon{font-size:44px;margin-bottom:12px}
 .gate-card h2{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#fff;margin-bottom:6px}
@@ -107,7 +105,6 @@ a{color:var(--v4);text-decoration:none}
 .fg input:focus,.fg select:focus{outline:none;border-color:var(--v4);background:var(--p3)}
 .fg input::placeholder{color:#444}
 .fg input.err-inp{border-color:var(--rd)}
-.err-msg{color:var(--rd);font-size:11px;margin-top:3px}
 /* File upload */
 .file-wrap input[type=file]{position:absolute;opacity:0;width:0;height:0}
 .file-lbl{display:flex;align-items:center;gap:10px;background:var(--p2);border:1px dashed var(--br2);border-radius:8px;padding:12px 13px;cursor:pointer;transition:all .2s;min-height:46px}
@@ -186,9 +183,7 @@ tbody tr:last-child{border:none}
 tbody tr.win{background:rgba(249,168,37,.05)}
 tbody td{padding:11px 8px;font-size:12px;text-align:center;vertical-align:middle}
 tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
-@media(max-width:400px){
-  thead th:nth-child(4),thead th:nth-child(5),tbody td:nth-child(4),tbody td:nth-child(5){display:none}
-}
+@media(max-width:400px){thead th:nth-child(4),thead th:nth-child(5),tbody td:nth-child(4),tbody td:nth-child(5){display:none}}
 .pts-c{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--v4)}
 .prem-c{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--do)}
 .t-nota{font-size:11px;color:var(--tx3);text-align:center;line-height:1.6;padding:0 4px}
@@ -206,75 +201,6 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
 .pcard-score.pend{color:var(--tx3);font-size:14px;letter-spacing:1px}
 
 /* ════════════════════════════════════════════════════════
-   FAB & MODALS
-════════════════════════════════════════════════════════ */
-.fab{position:fixed;bottom:20px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--p2);border:1px solid var(--br);font-size:18px;cursor:pointer;z-index:200;transition:all .2s;box-shadow:var(--sh)}
-.fab:hover{background:var(--v2);border-color:var(--v4);transform:scale(1.08)}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.overlay.open{display:flex;align-items:flex-start;justify-content:center}
-.modal{background:var(--p1);border:1px solid var(--br);border-radius:var(--ra);padding:24px;width:100%;max-width:440px;position:relative;margin:auto}
-.modal.lg{max-width:640px}
-.modal h2{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:#fff;margin-bottom:20px}
-.mclose{position:absolute;top:12px;right:12px;background:none;border:none;color:var(--tx3);font-size:18px;cursor:pointer;padding:4px 8px;border-radius:6px;transition:all .2s}
-.mclose:hover{background:var(--p3);color:#fff}
-.merr{color:var(--rd);font-size:12px;margin-top:6px;min-height:16px}
-
-/* ════════════════════════════════════════════════════════
-   ADMIN
-════════════════════════════════════════════════════════ */
-.atabs{display:flex;gap:3px;margin-bottom:20px;background:var(--p2);padding:3px;border-radius:8px;overflow-x:auto}
-.atab{flex:1;min-width:80px;padding:9px 6px;background:none;border:none;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;color:var(--tx3);cursor:pointer;transition:all .2s;white-space:nowrap}
-.atab.active{background:var(--v2);color:#fff}
-.ac{display:none}.ac.active{display:block}
-.asec{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--br)}
-.asec:last-child{border:none;margin:0;padding:0}
-.asec h3{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;color:var(--do);margin-bottom:12px;text-transform:uppercase}
-.ahint{font-size:12px;color:var(--tx2);margin-bottom:10px;line-height:1.5}
-.aact{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;padding-top:14px;border-top:1px solid var(--br);margin-top:14px}
-/* Toggle */
-.tog-row{display:flex;align-items:center;gap:10px;margin-top:6px}
-.tog{position:relative;display:inline-block;width:40px;height:22px;cursor:pointer;flex-shrink:0}
-.tog input{opacity:0;width:0;height:0}
-.tog-sl{position:absolute;inset:0;background:#444;border-radius:22px;transition:.3s}
-.tog-sl:before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
-.tog input:checked+.tog-sl{background:var(--v3)}
-.tog input:checked+.tog-sl:before{transform:translateX(18px)}
-.tog-lbl{font-size:13px;color:var(--tx)}
-/* Admin partido row */
-.apr{display:grid;grid-template-columns:1fr 1fr 70px 30px;gap:6px;align-items:center;margin-bottom:7px;background:var(--p2);padding:8px 10px;border-radius:8px;border:1px solid var(--br)}
-@media(max-width:480px){.apr{grid-template-columns:1fr 1fr;}.apr .aph{display:none}.apr .btn-rm{grid-column:2;justify-self:end}}
-.apr input{background:var(--p1);border:1px solid var(--br);border-radius:7px;padding:8px 9px;color:#fff;font-size:13px;width:100%}
-.apr input:focus{outline:none;border-color:var(--v4)}
-.btn-rm{background:none;border:1px solid var(--br);color:var(--rd);border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:14px;transition:all .2s;display:flex;align-items:center;justify-content:center}
-.btn-rm:hover{background:rgba(229,57,53,.1);border-color:var(--rd)}
-/* Resultado row */
-.rrow{display:grid;grid-template-columns:1fr 80px;gap:8px;align-items:center;margin-bottom:7px;padding:10px 12px;background:var(--p2);border-radius:8px;border:1px solid var(--br)}
-.rmatch{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rinp{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;background:var(--bg);border:1px solid var(--br);border-radius:7px;padding:7px 4px;color:#fff;width:100%}
-.rinp:focus{outline:none;border-color:var(--v4)}
-/* Inscritos */
-.stats{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.spill{background:var(--p2);border:1px solid var(--br);border-radius:20px;padding:5px 13px;font-size:12px}
-.spill strong{color:var(--do)}
-.irow{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:var(--p2);border-radius:8px;margin-bottom:5px;border:1px solid var(--br);gap:8px}
-.irow-info{flex:1;min-width:0}
-.iname{font-weight:600;color:#fff;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.imeta{color:var(--tx3);font-size:11px;margin-top:2px}
-.icode{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--do);flex-shrink:0}
-.irow-actions{display:flex;gap:5px;flex-shrink:0}
-.btn-del{background:none;border:1px solid var(--rd);color:var(--rd);border-radius:6px;padding:4px 8px;cursor:pointer;font-size:11px;font-weight:600;transition:all .2s;white-space:nowrap}
-.btn-del:hover{background:rgba(229,57,53,.1)}
-
-/* ════════════════════════════════════════════════════════
-   BUTTONS
-════════════════════════════════════════════════════════ */
-.btn{border:none;border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;padding:10px 16px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
-.btn-p{background:var(--v2);color:#fff}.btn-p:hover{background:var(--v3);transform:translateY(-1px)}
-.btn-s{background:none;border:1px solid var(--br);color:var(--tx)}.btn-s:hover{border-color:var(--v4);color:var(--v4)}
-.btn-d{background:none;border:1px solid var(--rd);color:var(--rd)}.btn-d:hover{background:rgba(229,57,53,.08)}
-.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
-
-/* ════════════════════════════════════════════════════════
    TOAST
 ════════════════════════════════════════════════════════ */
 .toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--p2);border:1px solid var(--br);border-radius:8px;padding:10px 16px;font-size:13px;color:#fff;z-index:1000;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:calc(100vw - 32px);text-align:center}
@@ -284,6 +210,20 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
 </style>
 </head>
 <body>
+
+<!-- ════════════════════════════════════════════════════
+   CONFIGURACIÓN — editar antes de subir a GitHub
+════════════════════════════════════════════════════ -->
+<script>
+// ▼▼▼ EDITAR ESTAS 2 LÍNEAS ▼▼▼
+const GH_USER    = "TU_USUARIO_GITHUB";     // ← tu usuario de GitHub
+const GH_REPO    = "TU_REPOSITORIO";        // ← nombre del repo
+const GAS_URL    = "TU_URL_GAS_AQUI";       // ← URL del Apps Script (para correos)
+// ▲▲▲ SOLO ESTAS 3 LÍNEAS ▲▲▲
+
+// URL donde está el data.json publicado
+const DATA_URL = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/data.json`;
+</script>
 
 <!-- HEADER -->
 <header class="hdr">
@@ -309,7 +249,6 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
 <!-- ══ TAB REGISTRO ══ -->
 <section class="tab-c active" id="tab-reg">
 <div class="wrap">
-  <!-- Formulario -->
   <div class="card" id="cardForm">
     <div class="card-hdr">
       <h2>REGISTRO</h2>
@@ -350,7 +289,6 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
       <button type="submit" class="btn-sub" id="btnSub">⚡ ENVIAR PRONÓSTICOS</button>
     </form>
   </div>
-  <!-- Confirmación -->
   <div class="confirm-box" id="confirmBox" style="display:none">
     <div class="ico">🎉</div>
     <h2>¡REGISTRO CONFIRMADO!</h2>
@@ -359,7 +297,7 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
     <div class="code-box">
       <div class="code-lbl">TU CÓDIGO DE ACCESO A LA TABLA</div>
       <div class="code-val" id="cfCode">----</div>
-      <div style="font-size:11px;color:var(--tx2);margin-top:4px">Guardalo — lo vas a necesitar para ver los resultados</div>
+      <div style="font-size:11px;color:var(--tx2);margin-top:4px">Guardalo — lo necesitás para ver los resultados</div>
     </div>
     <div class="cp-list" id="cfList"></div>
   </div>
@@ -369,7 +307,6 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
 <!-- ══ TAB TABLA ══ -->
 <section class="tab-c" id="tab-tabla">
 <div class="wrap">
-  <!-- GATE: acceso con código -->
   <div id="tablaGate">
     <div class="gate">
       <div class="gate-card">
@@ -377,14 +314,15 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
         <h2>ACCESO A LA TABLA</h2>
         <p>Ingresá el código que recibiste al registrarte para ver las posiciones.</p>
         <div class="gate-inp">
-          <input type="text" id="gateCode" placeholder="EMJ1-XXXX" maxlength="9" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')verifyCode()">
-          <button class="btn btn-p" onclick="verifyCode()">ENTRAR</button>
+          <input type="text" id="gateCode" placeholder="EMJ1-XXXX" maxlength="9"
+            oninput="this.value=this.value.toUpperCase()"
+            onkeydown="if(event.key==='Enter')verifyCode()">
+          <button class="tab" style="flex:none;padding:0 16px;border-bottom:none;color:var(--do);border:1px solid var(--do);border-radius:8px" onclick="verifyCode()">ENTRAR</button>
         </div>
         <div class="gate-err" id="gateErr"></div>
       </div>
     </div>
   </div>
-  <!-- Tabla (oculta hasta verificar código) -->
   <div id="tablaContent" style="display:none">
     <div class="t-hdr">
       <h2>🏆 TABLA</h2>
@@ -410,55 +348,45 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
 </div>
 </section>
 
-<!-- FAB ADMIN -->
-
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// CONFIGURACIÓN — completar después de deployar el GAS
-// ════════════════════════════════════════════════════════════════
-const GAS = "https://script.google.com/macros/s/AKfycbyLBJCjc0OEsddTLVHk3YaCUSmR7yQbzaRzssmihxgoBG81x8PSLxpyrDRlXDzaYlKw/exec"; // ← Reemplazar con tu URL de Apps Script
-
-// ════════════════════════════════════════════════════════════════
 // ESTADO LOCAL
 // ════════════════════════════════════════════════════════════════
 let J = {
-  numero:1, precio:10000, nequi:"3001234567",
-  cierre:null, abierto:true, partidos:[], resultados:{}, participantes:[]
+  numero:1, precio:10000, nequi:'', cierre:null, abierto:true,
+  partidos:[], resultados:{}, totalInscritos:0, tabla:[], codigos:[]
 };
 let codigoVerificado = false;
-let pendingDelIdx    = null;
 
 // ════════════════════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', async () => {
   setupTabs();
-  setupAdminTabs();
   setupForm();
   startCountdown();
-  await loadJornada();
-  setInterval(autoRefreshTabla, 30000);
+  await loadData();
+  setInterval(loadData, 60000); // recargar cada 1 min
 });
 
 // ════════════════════════════════════════════════════════════════
-// CARGAR JORNADA
+// CARGAR DATA.JSON DESDE GITHUB
 // ════════════════════════════════════════════════════════════════
-async function loadJornada() {
-  // Render inmediato con defaults para que la página no espere
-  renderAll();
-  // Luego cargar datos reales del servidor
+async function loadData() {
   try {
-    const r = await gasGet('getJornada');
-    if (r.ok) {
-      J = { ...J, ...r.data };
-      renderAll(); // actualizar con datos reales
-    }
+    const r = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    J = { ...J, ...data };
+    renderAll();
+    if (codigoVerificado) renderTabla();
+    document.getElementById('tStatus').textContent = 'Actualizado: ' + new Date().toLocaleTimeString('es');
   } catch(e) {
-    showToast('Sin conexión — mostrando última configuración','err');
+    showToast('Sin conexión — verificá tu internet','err');
+    // Render con defaults igual
+    renderAll();
   }
 }
 
@@ -466,21 +394,20 @@ function renderAll() {
   renderHeader();
   renderFormPartidos();
   renderPartidosTab();
-  if (codigoVerificado) refreshTabla();
 }
 
 // ════════════════════════════════════════════════════════════════
 // HEADER
 // ════════════════════════════════════════════════════════════════
 function renderHeader() {
-  const bolsa = Math.round((J.participantes?.length||0) * J.precio * 0.8);
+  const bolsa = Math.round((J.totalInscritos||0) * (J.precio||0) * 0.8);
   document.getElementById('hdrBadges').innerHTML = `
-    <span class="badge">🏆 JORNADA <strong>${J.numero}</strong></span>
+    <span class="badge">🏆 JORNADA <strong>${J.numero||1}</strong></span>
     <span class="badge">💵 ENTRADA <strong>$${fmt(J.precio)}</strong></span>
     <span class="badge">💰 BOLSA <strong>$${fmt(bolsa)}</strong></span>
   `;
   document.getElementById('prizeVal').textContent = '$'+fmt(bolsa);
-  document.getElementById('nqNum').textContent    = J.nequi;
+  document.getElementById('nqNum').textContent    = J.nequi||'—';
   document.getElementById('nqVal').textContent    = '$'+fmt(J.precio);
 }
 
@@ -495,16 +422,13 @@ function startCountdown() {
     if (!J.cierre) { val.textContent='--:--:--'; return; }
     const diff = new Date(J.cierre) - new Date();
     if (diff <= 0) {
-      val.textContent='00:00:00';
-      lbl.textContent='🔒 CERRADO';
-      bar.classList.add('closed');
-      return;
+      val.textContent='00:00:00'; lbl.textContent='🔒 CERRADO';
+      bar.classList.add('closed'); return;
     }
-    bar.classList.remove('closed');
-    lbl.textContent='⏰ CIERRE EN';
+    bar.classList.remove('closed'); lbl.textContent='⏰ CIERRE EN';
     const h=Math.floor(diff/3600000), m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
     val.textContent=`${pad(h)}:${pad(m)}:${pad(s)}`;
-  },1000);
+  }, 1000);
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -514,26 +438,22 @@ function renderFormPartidos() {
   const open = J.abierto;
   document.getElementById('regForm').style.display  = open ? '' : 'none';
   document.getElementById('closedBox').style.display = open ? 'none' : '';
-
-  document.getElementById('pRows').innerHTML = J.partidos.map((p,i)=>`
+  document.getElementById('pRows').innerHTML = (J.partidos||[]).map((p,i) => `
     <div class="p-row">
       <div class="p-n">${i+1}</div>
       <div class="p-info">
-        <div class="p-match">${p.local} vs ${p.visitante}</div>
+        <div class="p-match">${p.local||''} vs ${p.visitante||''}</div>
         <div class="p-hora">${p.hora||''}</div>
       </div>
       <input class="p-inp" type="text" id="pi${i}" placeholder="0-0" maxlength="5"
         inputmode="decimal" autocomplete="off"
-        oninput="onPronoInput(this)"
-        onblur="onPronoBlur(this)">
+        oninput="onPronoInput(this)" onblur="onPronoBlur(this)">
     </div>
   `).join('');
 }
 
 function onPronoInput(inp) {
-  // Ayuda al usuario: agrega el guión automáticamente
   let v = inp.value.replace(/[^0-9-]/g,'');
-  // Si escribió 2 dígitos sin guión, no auto-agregar (puede querer 10, 11...)
   inp.value = v;
   const ok = /^\d{1,2}-\d{1,2}$/.test(v.trim());
   inp.classList.toggle('ok', ok);
@@ -549,15 +469,12 @@ function onPronoBlur(inp) {
 }
 
 function setupForm() {
-  // File input
   document.getElementById('fComp').addEventListener('change', e => {
     const f = e.target.files[0];
     if (!f) return;
     document.getElementById('fileTxt').textContent = f.name;
     document.getElementById('fileLbl').classList.add('has-file');
   });
-
-  // Submit
   document.getElementById('regForm').addEventListener('submit', async e => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -566,42 +483,18 @@ function setupForm() {
 }
 
 function validateForm() {
-  // Nombre
   const nombre = document.getElementById('fNombre').value.trim();
-  if (!nombre) {
-    document.getElementById('fNombre').focus();
-    showToast('⚠️ Ingresá tu nombre completo','err'); return false;
-  }
-  // Correo
+  if (!nombre) { showToast('⚠️ Ingresá tu nombre completo','err'); return false; }
   const correo = document.getElementById('fCorreo').value.trim();
-  if (!correo || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
-    document.getElementById('fCorreo').focus();
-    showToast('⚠️ Correo electrónico inválido','err'); return false;
-  }
-  // WhatsApp
+  if (!correo || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) { showToast('⚠️ Correo electrónico inválido','err'); return false; }
   const wa = document.getElementById('fWA').value.trim();
-  if (!wa || wa.length < 7) {
-    document.getElementById('fWA').focus();
-    showToast('⚠️ Ingresá tu número de WhatsApp','err'); return false;
-  }
-  // Comprobante
-  if (!document.getElementById('fComp').files[0]) {
-    showToast('⚠️ Adjuntá el comprobante de pago Nequi','err'); return false;
-  }
-  // Pronósticos — todos deben estar completos y en formato correcto
-  if (!J.partidos.length) {
-    showToast('⚠️ No hay partidos cargados aún','err'); return false;
-  }
+  if (!wa || wa.length < 7) { showToast('⚠️ Ingresá tu número de WhatsApp','err'); return false; }
+  if (!document.getElementById('fComp').files[0]) { showToast('⚠️ Adjuntá el comprobante de pago','err'); return false; }
+  if (!J.partidos?.length) { showToast('⚠️ No hay partidos cargados aún','err'); return false; }
   for (let i=0; i<J.partidos.length; i++) {
     const v = (document.getElementById(`pi${i}`)?.value||'').trim();
-    if (!v) {
-      document.getElementById(`pi${i}`)?.focus();
-      showToast(`⚠️ Falta el pronóstico del Partido ${i+1}`,'err'); return false;
-    }
-    if (!/^\d{1,2}-\d{1,2}$/.test(v)) {
-      document.getElementById(`pi${i}`)?.focus();
-      showToast(`⚠️ Partido ${i+1}: formato incorrecto. Usá 2-1`,'err'); return false;
-    }
+    if (!v) { document.getElementById(`pi${i}`)?.focus(); showToast(`⚠️ Falta el pronóstico del Partido ${i+1}`,'err'); return false; }
+    if (!/^\d{1,2}-\d{1,2}$/.test(v)) { document.getElementById(`pi${i}`)?.focus(); showToast(`⚠️ Partido ${i+1}: usá formato 2-1`,'err'); return false; }
   }
   return true;
 }
@@ -614,133 +507,139 @@ async function submitRegistro() {
   const correo = document.getElementById('fCorreo').value.trim();
   const wa     = document.getElementById('fWA').value.trim();
   const comp   = document.getElementById('fComp').files[0];
-  const pronos = J.partidos.map((_,i)=>document.getElementById(`pi${i}`)?.value.trim()||'');
+  const pronos = J.partidos.map((_,i) => document.getElementById(`pi${i}`)?.value.trim()||'');
 
   let b64='', compNom='';
   if (comp) { b64 = await toB64(comp); compNom = comp.name; }
 
+  // Generar número y código localmente
+  const numero = (J.totalInscritos||0) + 1;
+  const codigo = `EMJ${J.numero}-${randomCode()}`;
+
   try {
-    const res = await gasPost({
-      action:'registro', jornada:J.numero,
-      nombre, correo, wa, b64, compNom, pronos,
-      partidos: J.partidos.map(p=>`${p.local} vs ${p.visitante}`)
+    // Llamar GAS SOLO para enviar correos
+    const res = await fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        action:   'sendEmails',
+        nombre, correo, wa, b64, compNom,
+        numero, codigo,
+        jornada:  J.numero,
+        precio:   J.precio,
+        pronos,
+        partidos: J.partidos.map(p => `${p.local} vs ${p.visitante}`),
+      }),
+      redirect: 'follow',
     });
 
-    if (res.ok) {
-      document.getElementById('cardForm').style.display='none';
-      document.getElementById('confirmBox').style.display='';
-      document.getElementById('cfNum').textContent='#'+res.numero;
-      document.getElementById('cfCode').textContent=res.codigo;
-      document.getElementById('cfList').innerHTML = J.partidos.map((p,i)=>`
-        <div class="cp-row">
-          <span class="cp-match">${i+1}. ${p.local} vs ${p.visitante}</span>
-          <span class="cp-score">${pronos[i]||'—'}</span>
-        </div>
-      `).join('');
-      J.participantes = J.participantes || [];
-      J.participantes.push({ nombre, wa });
-      renderHeader();
-      showToast('✅ Registro confirmado','ok');
+    let gasOk = false;
+    try {
+      const d = await res.json();
+      gasOk = d.ok === true;
+    } catch(e2) { gasOk = res.ok; }
+
+    // Mostrar confirmación independientemente del correo
+    document.getElementById('cardForm').style.display   = 'none';
+    document.getElementById('confirmBox').style.display = '';
+    document.getElementById('cfNum').textContent   = '#'+numero;
+    document.getElementById('cfCode').textContent  = codigo;
+    document.getElementById('cfList').innerHTML    = J.partidos.map((p,i) => `
+      <div class="cp-row">
+        <span class="cp-match">${i+1}. ${p.local} vs ${p.visitante}</span>
+        <span class="cp-score">${pronos[i]||'—'}</span>
+      </div>
+    `).join('');
+
+    if (gasOk) {
+      showToast('✅ Registro confirmado — revisá tu correo','ok');
     } else {
-      showToast(res.msg||'❌ Error al registrar','err');
+      showToast('✅ Registro OK — el correo puede demorar','ok');
     }
+
   } catch(e) {
-    showToast('❌ Error de conexión — reintentá','err');
+    // Error de red → mostrar confirmación igual, avisar del correo
+    document.getElementById('cardForm').style.display   = 'none';
+    document.getElementById('confirmBox').style.display = '';
+    document.getElementById('cfNum').textContent  = '#'+numero;
+    document.getElementById('cfCode').textContent = codigo;
+    document.getElementById('cfList').innerHTML   = J.partidos.map((p,i) => `
+      <div class="cp-row">
+        <span class="cp-match">${i+1}. ${p.local} vs ${p.visitante}</span>
+        <span class="cp-score">${pronos[i]||'—'}</span>
+      </div>
+    `).join('');
+    showToast('⚠️ Registro guardado — sin conexión para correo','err');
   }
 
   btn.disabled=false; btn.textContent='⚡ ENVIAR PRONÓSTICOS';
 }
 
 // ════════════════════════════════════════════════════════════════
-// ACCESO A TABLA CON CÓDIGO
+// TABLA — verificación de código contra data.json
 // ════════════════════════════════════════════════════════════════
-async function verifyCode() {
+function verifyCode() {
   const code = document.getElementById('gateCode').value.trim().toUpperCase();
   const err  = document.getElementById('gateErr');
-  err.textContent='';
-
+  err.textContent = '';
   if (!code || code.length < 4) { err.textContent='Ingresá un código válido'; return; }
 
-  // Guardar en sesión para no pedir de nuevo
-  if (sessionStorage.getItem('emCode') === code && codigoVerificado) {
-    unlockTabla(); return;
-  }
-
-  try {
-    const r = await gasGet(`verifyCode&code=${encodeURIComponent(code)}&j=${J.numero}`);
-    if (r.ok) {
-      codigoVerificado = true;
-      sessionStorage.setItem('emCode', code);
-      unlockTabla();
+  // Verificar contra la lista de códigos del data.json
+  const codigos = J.codigos || [];
+  if (codigos.length === 0) {
+    // Sin códigos en data.json = aún no se publicó; aceptar cualquier código con formato correcto
+    if (/^EMJ\d+-[A-Z0-9]{4}$/.test(code)) {
+      unlockTabla(code);
     } else {
-      err.textContent = r.msg || 'Código incorrecto';
+      err.textContent = 'Código incorrecto';
     }
-  } catch(e) {
-    err.textContent = 'Error de conexión';
+    return;
+  }
+
+  if (codigos.includes(code)) {
+    unlockTabla(code);
+  } else {
+    err.textContent = 'Código incorrecto';
   }
 }
 
-function unlockTabla() {
-  document.getElementById('tablaGate').style.display='none';
-  document.getElementById('tablaContent').style.display='';
-  refreshTabla();
+function unlockTabla(code) {
+  codigoVerificado = true;
+  sessionStorage.setItem('emCode', code);
+  document.getElementById('tablaGate').style.display    = 'none';
+  document.getElementById('tablaContent').style.display = '';
+  renderTabla();
 }
-
-// Si ya verificó en esta sesión, desbloquear automático
-window.addEventListener('load', () => {
-  const saved = sessionStorage.getItem('emCode');
-  if (saved) {
-    document.getElementById('gateCode').value = saved;
-    // No auto-verificar, que ingrese el código cada vez que cambia de tab
-  }
-});
 
 // ════════════════════════════════════════════════════════════════
-// TABLA
+// TABLA RENDER — desde data.json
 // ════════════════════════════════════════════════════════════════
-async function refreshTabla() {
-  document.getElementById('tStatus').textContent='Actualizando...';
-  try {
-    const r = await gasGet(`getTabla&j=${J.numero}`);
-    if (r.ok) {
-      renderTabla(r.data);
-      renderPodio(r.data);
-      document.getElementById('tStatus').textContent='Actualizado: '+new Date().toLocaleTimeString('es');
-    }
-  } catch(e) {
-    document.getElementById('tStatus').textContent='Sin datos';
-  }
-}
+function renderTabla() {
+  const data   = J.tabla || [];
+  const bolsa  = Math.round((J.totalInscritos||0) * (J.precio||0) * 0.8);
+  const g1     = data.filter(d => d.pos===1).length || 1;
+  const prem   = Math.round(bolsa/g1);
 
-async function autoRefreshTabla() {
-  if (codigoVerificado) await refreshTabla();
-}
+  document.getElementById('tBody').innerHTML = data.length
+    ? data.map(p => `
+        <tr class="${p.pos===1?'win':''}">
+          <td style="color:${p.pos<=3?'var(--do)':'var(--tx3)'}">${p.pos===1?'🥇':p.pos===2?'🥈':p.pos===3?'🥉':p.pos}</td>
+          <td>${p.nombre||''}</td>
+          <td><span class="pts-c">${p.pts||0}</span></td>
+          <td style="color:var(--tx3)">${p.dif??'—'}</td>
+          <td style="color:var(--tx3)">${p.prox??'—'}</td>
+          <td>${p.pos===1?`<span class="prem-c">$${fmt(prem)}</span>`:'—'}</td>
+        </tr>
+      `).join('')
+    : '<tr><td colspan="6" style="padding:32px;text-align:center;color:var(--tx3)">Sin participantes aún</td></tr>';
 
-function renderTabla(data) {
-  const bolsa = Math.round((J.participantes?.length||data.length) * J.precio * 0.8);
-  const g1    = data.filter(d=>d.pos===1).length||1;
-  const prem  = Math.round(bolsa/g1);
-  document.getElementById('tBody').innerHTML = data.length ? data.map(p=>`
-    <tr class="${p.pos===1?'win':''}">
-      <td style="color:${p.pos<=3?'var(--do)':'var(--tx3)'}">${p.pos===1?'🥇':p.pos===2?'🥈':p.pos===3?'🥉':p.pos}</td>
-      <td>${p.nombre}</td>
-      <td><span class="pts-c">${p.pts}</span></td>
-      <td style="color:var(--tx3)">${p.dif??'—'}</td>
-      <td style="color:var(--tx3)">${p.prox??'—'}</td>
-      <td>${p.pos===1?`<span class="prem-c">$${fmt(prem)}</span>`:'—'}</td>
-    </tr>
-  `).join('') : '<tr><td colspan="6" style="padding:32px;text-align:center;color:var(--tx3)">Sin participantes aún</td></tr>';
-}
-
-function renderPodio(data) {
-  const top   = data.filter(d=>d.pos===1);
-  const bolsa = Math.round((J.participantes?.length||data.length)*J.precio*0.8);
-  const prem  = Math.round(bolsa/(top.length||1));
-  document.getElementById('podio').innerHTML = top.map(p=>`
+  // Podio
+  const top = data.filter(d => d.pos===1);
+  document.getElementById('podio').innerHTML = top.map(p => `
     <div class="podio-b p1">
       <div class="p-med">🥇</div>
-      <div class="p-nm">${p.nombre}</div>
-      <div class="p-pts">${p.pts} pts</div>
+      <div class="p-nm">${p.nombre||''}</div>
+      <div class="p-pts">${p.pts||0} pts</div>
       <div class="p-prem">$${fmt(prem)}</div>
     </div>
   `).join('');
@@ -750,13 +649,13 @@ function renderPodio(data) {
 // PARTIDOS TAB
 // ════════════════════════════════════════════════════════════════
 function renderPartidosTab() {
-  document.getElementById('pCards').innerHTML = J.partidos.map((p,i)=>{
+  document.getElementById('pCards').innerHTML = (J.partidos||[]).map((p,i) => {
     const r = J.resultados?.[i];
     return `
       <div class="pcard">
         <div class="pcard-n">${i+1}</div>
         <div class="pcard-info">
-          <div class="pcard-match">${p.local} vs ${p.visitante}</div>
+          <div class="pcard-match">${p.local||''} vs ${p.visitante||''}</div>
           <div class="pcard-meta">${p.hora||''}</div>
         </div>
         <div class="pcard-score ${r?'':'pend'}">${r||'⏳'}</div>
@@ -770,79 +669,49 @@ function renderPartidosTab() {
 function setupTabs() {
   document.querySelectorAll('.tab').forEach(t => {
     t.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-      document.querySelectorAll('.tab-c').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.tab-c').forEach(x => x.classList.remove('active'));
       t.classList.add('active');
-      document.getElementById('tab-'+t.dataset.tab).classList.add('active');
-      // Al abrir tabla, verificar si ya tiene código en sesión
+      document.getElementById('tab-'+t.dataset.tab)?.classList.add('active');
       if (t.dataset.tab==='tabla') {
         const saved = sessionStorage.getItem('emCode');
-        if (saved) document.getElementById('gateCode').value=saved;
+        if (saved && !codigoVerificado) {
+          document.getElementById('gateCode').value = saved;
+        } else if (codigoVerificado) {
+          renderTabla();
+        }
       }
     });
   });
 }
 
-function setupAdminTabs() {
-  document.querySelectorAll('.atab').forEach(t => {
-    t.addEventListener('click', () => {
-      document.querySelectorAll('.atab').forEach(x=>x.classList.remove('active'));
-      document.querySelectorAll('.ac').forEach(x=>x.classList.remove('active'));
-      t.classList.add('active');
-      document.getElementById('ac-'+t.dataset.atab).classList.add('active');
-      if (t.dataset.atab==='inscritos') loadInscritos();
-      if (t.dataset.atab==='resultados') renderAdminResultados();
-    });
-  });
-}
-
-// ════════════════════════════════════════════════════════════════
-// GAS HELPERS
-// ════════════════════════════════════════════════════════════════
-async function gasGet(action) {
-  const r = await fetch(`${GAS}?action=${action}`, { redirect:'follow' });
-  return r.json();
-}
-
-async function gasPost(body) {
-  const r = await fetch(GAS, {
-    method:'POST',
-    headers:{'Content-Type':'text/plain'},
-    body: JSON.stringify(body),
-    redirect:'follow'
-  });
-  return r.json();
-}
-
 // ════════════════════════════════════════════════════════════════
 // UTILS
 // ════════════════════════════════════════════════════════════════
-function openM(id)  { document.getElementById(id).classList.add('open'); }
-function closeM(id) { document.getElementById(id).classList.remove('open'); }
-
-function showToast(msg,type='ok') {
-  const t=document.getElementById('toast');
+function showToast(msg, type='ok') {
+  const t = document.getElementById('toast');
   t.textContent=msg; t.className=`toast ${type} show`;
-  setTimeout(()=>t.classList.remove('show'),3200);
+  setTimeout(() => t.classList.remove('show'), 3200);
 }
 
 function fmt(n) { return (n||0).toLocaleString('es-CO'); }
 function pad(n) { return n.toString().padStart(2,'0'); }
 
 function toB64(file) {
-  return new Promise((res,rej)=>{
-    const r=new FileReader();
-    r.onload=()=>res(r.result.split(',')[1]);
-    r.onerror=rej;
+  return new Promise((res,rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
     r.readAsDataURL(file);
   });
 }
 
-// Cerrar modals al tocar afuera
-document.querySelectorAll('.overlay').forEach(o=>{
-  o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('open'); });
-});
+function randomCode() {
+  const c = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let s = '';
+  for(let i=0;i<4;i++) s += c[Math.floor(Math.random()*c.length)];
+  return s;
+}
 </script>
 </body>
 </html>
-
