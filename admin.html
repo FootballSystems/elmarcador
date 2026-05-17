@@ -377,10 +377,8 @@ async function confirmarDel() {
 
 function exportar() {
   if (!J.participantes?.length) { toast('Sin participantes','err'); return; }
-  let txt='#	Nombre	WhatsApp	Código
-';
-  J.participantes.forEach((p,i)=>{ txt+=`${i+1}	${p.nombre}	${p.wa}	${p.codigo||''}
-`; });
+  let txt='#' + '\t' + 'Nombre' + '\t' + 'WhatsApp' + '\t' + 'Codigo' + '\n';
+  J.participantes.forEach((p,i)=>{ txt+=(i+1)+'\t'+p.nombre+'\t'+p.wa+'\t'+(p.codigo||'')+'\n'; });
   const a=document.createElement('a');
   a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(txt);
   a.download=`ElMarcador_Inscritos.txt`;
