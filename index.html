@@ -411,103 +411,7 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
 </section>
 
 <!-- FAB ADMIN -->
-<button class="fab" id="fabBtn" title="Admin">⚙️</button>
 
-<!-- MODAL LOGIN ADMIN -->
-<div class="overlay" id="mLogin">
-  <div class="modal">
-    <button class="mclose" onclick="closeM('mLogin')">✕</button>
-    <h2>🔐 PANEL ADMIN</h2>
-    <div class="fg" style="margin-bottom:14px">
-      <label>Contraseña</label>
-      <input type="password" id="aPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')loginAdmin()">
-    </div>
-    <button class="btn btn-p" onclick="loginAdmin()" style="width:100%">ENTRAR</button>
-    <p class="merr" id="loginErr"></p>
-  </div>
-</div>
-
-<!-- MODAL ADMIN -->
-<div class="overlay" id="mAdmin">
-  <div class="modal lg">
-    <button class="mclose" onclick="closeM('mAdmin')">✕</button>
-    <h2>⚙️ PANEL ADMIN</h2>
-    <div class="atabs">
-      <button class="atab active" data-atab="jornada">📋 Jornada</button>
-      <button class="atab" data-atab="resultados">⚽ Resultados</button>
-      <button class="atab" data-atab="inscritos">👥 Inscritos</button>
-    </div>
-
-    <!-- ADMIN: JORNADA -->
-    <div class="ac active" id="ac-jornada">
-      <div class="asec">
-        <h3>Configuración de la jornada</h3>
-        <div class="frow">
-          <div class="fg"><label>Nº Jornada</label><input type="number" id="aJorn" value="1" min="1"></div>
-          <div class="fg"><label>Precio entrada ($)</label><input type="number" id="aPrecio" value="10000" step="1000"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label>Número Nequi</label><input type="text" id="aNequi" placeholder="3016492643"></div>
-          <div class="fg"><label>Cierre del formulario</label><input type="datetime-local" id="aCierre"></div>
-        </div>
-        <div class="fg" style="margin-top:8px">
-          <label>Estado del formulario</label>
-          <div class="tog-row">
-            <label class="tog"><input type="checkbox" id="aOpen" checked><span class="tog-sl"></span></label>
-            <span class="tog-lbl" id="togLbl">Abierto — aceptando inscripciones</span>
-          </div>
-        </div>
-      </div>
-      <div class="asec">
-        <h3>Partidos</h3>
-        <div id="aPartList"></div>
-        <button class="btn btn-s" onclick="addPartido()" style="margin-top:6px">+ Agregar partido</button>
-      </div>
-      <div class="aact">
-        <button class="btn btn-d" onclick="nuevaJornada()">🔄 Nueva jornada</button>
-        <button class="btn btn-p" onclick="saveJornada()" id="btnSaveJ">💾 Guardar</button>
-      </div>
-    </div>
-
-    <!-- ADMIN: RESULTADOS -->
-    <div class="ac" id="ac-resultados">
-      <div class="asec">
-        <h3>Resultados de los partidos</h3>
-        <p class="ahint">Ingresá el marcador final de cada partido para actualizar la tabla en tiempo real.</p>
-        <div id="aResList"></div>
-        <div class="aact"><button class="btn btn-p" onclick="saveResultados()">💾 Actualizar tabla</button></div>
-      </div>
-    </div>
-
-    <!-- ADMIN: INSCRITOS -->
-    <div class="ac" id="ac-inscritos">
-      <div class="asec">
-        <h3>Participantes inscritos</h3>
-        <div class="stats" id="aStats"></div>
-        <div id="aInscList"></div>
-        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
-          <button class="btn btn-s" onclick="exportarExcel()">📥 Exportar para Excel</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- MODAL CONFIRMAR ELIMINAR -->
-<div class="overlay" id="mConfDel">
-  <div class="modal">
-    <button class="mclose" onclick="closeM('mConfDel')">✕</button>
-    <h2>⚠️ ELIMINAR PARTICIPANTE</h2>
-    <p style="color:var(--tx2);font-size:14px;margin-bottom:8px">Vas a eliminar a:</p>
-    <p style="font-weight:700;font-size:16px;color:#fff;margin-bottom:16px" id="delNombre">—</p>
-    <p style="color:var(--tx2);font-size:13px;margin-bottom:20px">Esta acción no se puede deshacer. El participante y sus pronósticos serán borrados.</p>
-    <div style="display:flex;gap:10px">
-      <button class="btn btn-s" onclick="closeM('mConfDel')" style="flex:1">Cancelar</button>
-      <button class="btn btn-d" onclick="confirmarEliminar()" style="flex:1">🗑️ Eliminar</button>
-    </div>
-  </div>
-</div>
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
@@ -522,7 +426,7 @@ const GAS = "https://script.google.com/macros/s/AKfycbyLBJCjc0OEsddTLVHk3YaCUSmR
 // ESTADO LOCAL
 // ════════════════════════════════════════════════════════════════
 let J = {
-  numero:1, precio:10000, nequi:"3005555555",
+  numero:1, precio:10000, nequi:"3001234567",
   cierre:null, abierto:true, partidos:[], resultados:{}, participantes:[]
 };
 let codigoVerificado = false;
@@ -544,11 +448,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 // CARGAR JORNADA
 // ════════════════════════════════════════════════════════════════
 async function loadJornada() {
+  // Render inmediato con defaults para que la página no espere
+  renderAll();
+  // Luego cargar datos reales del servidor
   try {
     const r = await gasGet('getJornada');
-    if (r.ok) { J = { ...J, ...r.data }; }
-  } catch(e) { /* usa defaults */ }
-  renderAll();
+    if (r.ok) {
+      J = { ...J, ...r.data };
+      renderAll(); // actualizar con datos reales
+    }
+  } catch(e) {
+    showToast('Sin conexión — mostrando última configuración','err');
+  }
 }
 
 function renderAll() {
@@ -722,8 +633,8 @@ async function submitRegistro() {
       document.getElementById('cfCode').textContent=res.codigo;
       document.getElementById('cfList').innerHTML = J.partidos.map((p,i)=>`
         <div class="cp-row">
-          <span class="cp-match">${p.local} vs ${p.visitante}</span>
-          <span class="cp-score">${pronos[i]}</span>
+          <span class="cp-match">${i+1}. ${p.local} vs ${p.visitante}</span>
+          <span class="cp-score">${pronos[i]||'—'}</span>
         </div>
       `).join('');
       J.participantes = J.participantes || [];
@@ -886,205 +797,6 @@ function setupAdminTabs() {
 }
 
 // ════════════════════════════════════════════════════════════════
-// ADMIN
-// ════════════════════════════════════════════════════════════════
-document.getElementById('fabBtn').onclick = () => openM('mLogin');
-
-async function loginAdmin() {
-  const pwd = document.getElementById('aPass').value;
-  const err = document.getElementById('loginErr');
-  err.textContent='';
-  try {
-    const r = await gasPost({ action:'adminLogin', pwd });
-    if (r.ok) {
-      document.getElementById('aPass').value='';
-      closeM('mLogin');
-      loadAdminPanel();
-      openM('mAdmin');
-    } else {
-      err.textContent='Contraseña incorrecta';
-    }
-  } catch(e) {
-    err.textContent='Error de conexión';
-  }
-}
-
-function loadAdminPanel() {
-  document.getElementById('aJorn').value  = J.numero;
-  document.getElementById('aPrecio').value= J.precio;
-  document.getElementById('aNequi').value = J.nequi;
-  document.getElementById('aOpen').checked= J.abierto;
-  if (J.cierre) {
-    const d = new Date(J.cierre);
-    document.getElementById('aCierre').value = new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16);
-  }
-  updateTogLbl();
-  renderAdminPartidos();
-  document.getElementById('aOpen').onchange = updateTogLbl;
-}
-
-function updateTogLbl() {
-  const chk = document.getElementById('aOpen').checked;
-  document.getElementById('togLbl').textContent = chk ? 'Abierto — aceptando inscripciones' : 'Cerrado — no acepta inscripciones';
-}
-
-function renderAdminPartidos() {
-  document.getElementById('aPartList').innerHTML = J.partidos.map((p,i)=>`
-    <div class="apr">
-      <input type="text" value="${p.local}" placeholder="Local" id="apl${i}">
-      <input type="text" value="${p.visitante}" placeholder="Visitante" id="apv${i}">
-      <input type="text" value="${p.hora||''}" placeholder="Hora" id="aph${i}" class="aph">
-      <button class="btn-rm" onclick="removePartido(${i})">✕</button>
-    </div>
-  `).join('');
-}
-
-function addPartido() {
-  J.partidos.push({local:'',visitante:'',hora:''});
-  renderAdminPartidos();
-}
-
-function removePartido(i) {
-  J.partidos.splice(i,1);
-  renderAdminPartidos();
-}
-
-function renderAdminResultados() {
-  document.getElementById('aResList').innerHTML = J.partidos.map((p,i)=>`
-    <div class="rrow">
-      <div class="rmatch">${i+1}. ${p.local} vs ${p.visitante}</div>
-      <input class="rinp" type="text" id="rr${i}" value="${J.resultados?.[i]||''}" placeholder="2-1" maxlength="5" inputmode="numeric">
-    </div>
-  `).join('') || '<p style="color:var(--tx3);font-size:13px">Primero configurá los partidos en la pestaña Jornada</p>';
-}
-
-async function saveJornada() {
-  const btn = document.getElementById('btnSaveJ');
-  btn.disabled=true; btn.textContent='Guardando...';
-
-  const partidos = J.partidos.map((_,i)=>({
-    local:     (document.getElementById(`apl${i}`)?.value||'').trim(),
-    visitante: (document.getElementById(`apv${i}`)?.value||'').trim(),
-    hora:      (document.getElementById(`aph${i}`)?.value||'').trim(),
-  })).filter(p=>p.local&&p.visitante);
-
-  const cierre = document.getElementById('aCierre').value;
-  J = {
-    ...J,
-    numero:  parseInt(document.getElementById('aJorn').value)||1,
-    precio:  parseInt(document.getElementById('aPrecio').value)||10000,
-    nequi:   document.getElementById('aNequi').value.trim(),
-    cierre:  cierre ? new Date(cierre).toISOString() : null,
-    abierto: document.getElementById('aOpen').checked,
-    partidos,
-  };
-
-  try {
-    const r = await gasPost({ action:'saveJornada', data:{ ...J, participantes:undefined } });
-    if (r.ok) {
-      showToast('✅ Jornada guardada','ok');
-      renderAll();
-    } else { showToast('❌ '+r.msg,'err'); }
-  } catch(e) { showToast('❌ Error al guardar','err'); }
-
-  btn.disabled=false; btn.textContent='💾 Guardar';
-}
-
-async function saveResultados() {
-  const resultados = {};
-  J.partidos.forEach((_,i)=>{
-    const v=(document.getElementById(`rr${i}`)?.value||'').trim();
-    if(v) resultados[i]=v;
-  });
-  J.resultados = resultados;
-
-  try {
-    const r = await gasPost({ action:'saveResultados', jornada:J.numero, resultados });
-    if (r.ok) {
-      showToast('✅ Resultados actualizados','ok');
-      renderPartidosTab();
-      if (codigoVerificado) await refreshTabla();
-    } else { showToast('❌ '+r.msg,'err'); }
-  } catch(e) { showToast('❌ Error al guardar','err'); }
-}
-
-async function loadInscritos() {
-  document.getElementById('aInscList').innerHTML='<p style="color:var(--tx3);font-size:13px;padding:12px">Cargando...</p>';
-  try {
-    const r = await gasGet(`getInscritos&j=${J.numero}`);
-    if (r.ok) {
-      J.participantes = r.data;
-      const bolsa = Math.round(r.data.length*J.precio*0.8);
-      document.getElementById('aStats').innerHTML=`
-        <span class="spill">Inscritos: <strong>${r.data.length}</strong></span>
-        <span class="spill">Recaudado: <strong>$${fmt(r.data.length*J.precio)}</strong></span>
-        <span class="spill">Bolsa: <strong>$${fmt(bolsa)}</strong></span>
-      `;
-      document.getElementById('aInscList').innerHTML = r.data.length
-        ? r.data.map((p,i)=>`
-          <div class="irow">
-            <div class="irow-info">
-              <div class="iname">#${i+1} ${p.nombre}</div>
-              <div class="imeta">${p.wa} · ${p.hora||''}</div>
-            </div>
-            <div class="icode">${p.codigo||''}</div>
-            <div class="irow-actions">
-              <button class="btn-del" onclick="pedirEliminar(${i},'${p.nombre.replace(/'/g,"\\'")}')">🗑️ Eliminar</button>
-            </div>
-          </div>
-        `).join('')
-        : '<p style="color:var(--tx3);font-size:13px;padding:12px;text-align:center">Sin participantes aún</p>';
-      renderHeader();
-    }
-  } catch(e) {
-    document.getElementById('aInscList').innerHTML='<p style="color:var(--tx3);font-size:13px;padding:12px">Error al cargar</p>';
-  }
-}
-
-function pedirEliminar(idx, nombre) {
-  pendingDelIdx = idx;
-  document.getElementById('delNombre').textContent = nombre;
-  openM('mConfDel');
-}
-
-async function confirmarEliminar() {
-  if (pendingDelIdx === null) return;
-  const p = J.participantes[pendingDelIdx];
-  closeM('mConfDel');
-
-  try {
-    const r = await gasPost({ action:'eliminarParticipante', jornada:J.numero, idx:pendingDelIdx, correo:p.correo });
-    if (r.ok) {
-      showToast(`✅ ${p.nombre} eliminado`,'ok');
-      await loadInscritos();
-    } else { showToast('❌ '+r.msg,'err'); }
-  } catch(e) { showToast('❌ Error al eliminar','err'); }
-  pendingDelIdx=null;
-}
-
-function exportarExcel() {
-  if (!J.participantes?.length) { showToast('Sin participantes','err'); return; }
-  let txt='#\tNombre\tWhatsApp\tCódigo\n';
-  J.participantes.forEach((p,i)=>{ txt+=`${i+1}\t${p.nombre}\t${p.wa}\t${p.codigo||''}\n`; });
-  const a=document.createElement('a');
-  a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(txt);
-  a.download=`ElMarcador_J${J.numero}.txt`;
-  a.click();
-  showToast('📥 Descargando lista','ok');
-}
-
-async function nuevaJornada() {
-  if (!confirm(`¿Limpiar todo e iniciar la Jornada ${J.numero+1}? No se puede deshacer.`)) return;
-  J = { ...J, numero:J.numero+1, cierre:null, abierto:true, partidos:[], resultados:{}, participantes:[] };
-  try {
-    await gasPost({ action:'nuevaJornada', data:{ ...J, participantes:undefined } });
-    showToast(`✅ Jornada ${J.numero} iniciada`,'ok');
-    loadAdminPanel();
-    renderAll();
-  } catch(e) { showToast('❌ Error','err'); }
-}
-
-// ════════════════════════════════════════════════════════════════
 // GAS HELPERS
 // ════════════════════════════════════════════════════════════════
 async function gasGet(action) {
@@ -1133,3 +845,4 @@ document.querySelectorAll('.overlay').forEach(o=>{
 </script>
 </body>
 </html>
+
