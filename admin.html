@@ -186,12 +186,12 @@ body{font-family:Arial,sans-serif;background:var(--bg);color:var(--tx);min-heigh
 <div class="toast" id="toast"></div>
 
 <script>
-const GAS = "https://script.google.com/macros/s/AKfycbyLBJCjc0OEsddTLVHk3YaCUSmR7yQbzaRzssmihxgoBG81x8PSLxpyrDRlXDzaYlKw/exec"; // ← Misma URL que en index.html
+const GAS = "https://script.google.com/macros/s/AKfycbyLBJCjc0OEsddTLVHk3YaCUSmR7yQbzaRzssmihxgoBG81x8PSLxpyrDRlXDzaYlKw/exec"; 
 
 let J = { precio:10000, nequi:'3016492643', cierre:null, abierto:true, partidos:[], resultados:{}, participantes:[], numero:1 };
 let pendingDel = null;
 
-// ── LOGIN ──────────────────────────────────────────────────────────
+// //  LOGIN
 async function login() {
   const pwd = document.getElementById('pwd').value;
   const err = document.getElementById('loginErr');
@@ -211,7 +211,7 @@ async function login() {
 }
 document.getElementById('pwd').addEventListener('keydown', e=>{ if(e.key==='Enter') login(); });
 
-// ── TABS ───────────────────────────────────────────────────────────
+// //  TABS
 document.querySelectorAll('.tab').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
@@ -223,7 +223,7 @@ document.querySelectorAll('.tab').forEach(t=>{
   });
 });
 
-// ── CARGAR PANEL ───────────────────────────────────────────────────
+// //  CARGAR PANEL
 async function loadPanel() {
   try {
     const r = await gasGet('getJornada');
@@ -250,7 +250,7 @@ function updateTogLbl() {
   document.getElementById('togLbl').textContent = chk ? 'Abierto — aceptando inscripciones' : 'Cerrado';
 }
 
-// ── PARTIDOS ───────────────────────────────────────────────────────
+// //  PARTIDOS
 function readPartidosFromDOM() {
   return J.partidos.map((_,i)=>({
     local:     (document.getElementById(`apl${i}`)?.value||J.partidos[i].local||'').trim(),
@@ -284,7 +284,7 @@ function removePartido(i) {
   renderAdminPartidos();
 }
 
-// ── GUARDAR JORNADA ────────────────────────────────────────────────
+// //  GUARDAR JORNADA
 async function saveJornada() {
   const btn = document.getElementById('btnSave');
   btn.textContent='Guardando...'; btn.disabled=true;
@@ -309,7 +309,7 @@ async function saveJornada() {
   btn.textContent='💾 Guardar'; btn.disabled=false;
 }
 
-// ── RESULTADOS ─────────────────────────────────────────────────────
+// //  RESULTADOS
 function renderResultados() {
   document.getElementById('aResList').innerHTML = J.partidos.length
     ? J.partidos.map((p,i)=>`
@@ -331,7 +331,7 @@ async function saveResultados() {
   } catch(e) { toast('❌ Error de conexión','err'); }
 }
 
-// ── INSCRITOS ─────────────────────────────────────────────────────
+// //  INSCRITOS
 async function loadInscritos() {
   document.getElementById('aInscList').innerHTML='<p style="color:var(--tx3);font-size:13px;padding:8px">Cargando...</p>';
   try {
@@ -397,7 +397,7 @@ async function nuevaJornada() {
   } catch(e) { toast('❌ Error','err'); }
 }
 
-// ── GAS HELPERS ────────────────────────────────────────────────────
+// //  GAS HELPERS
 async function gasGet(action) {
   const r = await fetch(`${GAS}?action=${action}`, {redirect:'follow'});
   return r.json();
@@ -407,7 +407,7 @@ async function gasPost(body) {
   return r.json();
 }
 
-// ── UTILS ──────────────────────────────────────────────────────────
+// //  UTILS
 function toast(msg,type='ok') {
   const t=document.getElementById('toast');
   t.textContent=msg; t.className=`toast ${type} show`;
