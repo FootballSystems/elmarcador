@@ -475,7 +475,7 @@ function renderAll() {
 function renderHeader() {
   const bolsa = Math.round((J.participantes?.length||0) * J.precio * 0.8);
   document.getElementById('hdrBadges').innerHTML = `
-    <span class="badge">🏆 JORNADA <strong>${J.numero}</strong></span>
+    <span class="badge">🏆 JORNADA</span>
     <span class="badge">💵 ENTRADA <strong>$${fmt(J.precio)}</strong></span>
     <span class="badge">💰 BOLSA <strong>$${fmt(bolsa)}</strong></span>
   `;
@@ -621,7 +621,7 @@ async function submitRegistro() {
 
   try {
     const res = await gasPost({
-      action:'registro', jornada:J.numero,
+      action:'registro', jornada:1,
       nombre, correo, wa, b64, compNom, pronos,
       partidos: J.partidos.map(p=>`${p.local} vs ${p.visitante}`)
     });
@@ -667,7 +667,7 @@ async function verifyCode() {
   }
 
   try {
-    const r = await gasGet(`verifyCode&code=${encodeURIComponent(code)}&j=${J.numero}`);
+    const r = await gasGet(`verifyCode&code=${encodeURIComponent(code)}`);
     if (r.ok) {
       codigoVerificado = true;
       sessionStorage.setItem('emCode', code);
@@ -701,7 +701,7 @@ window.addEventListener('load', () => {
 async function refreshTabla() {
   document.getElementById('tStatus').textContent='Actualizando...';
   try {
-    const r = await gasGet(`getTabla&j=${J.numero}`);
+    const r = await gasGet('getTabla');
     if (r.ok) {
       renderTabla(r.data);
       renderPodio(r.data);
