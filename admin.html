@@ -325,7 +325,7 @@ async function saveResultados() {
   J.partidos.forEach((_,i)=>{ const v=(document.getElementById(`rr${i}`)?.value||'').trim(); if(v) resultados[i]=v; });
   J.resultados=resultados;
   try {
-    const r = await gasPost({ action:'saveResultados', jornada:J.numero, resultados });
+    const r = await gasPost({ action:'saveResultados', jornada:1, resultados });
     if (r.ok) toast('✅ Tabla actualizada','ok');
     else toast('❌ '+r.msg,'err');
   } catch(e) { toast('❌ Error de conexión','err'); }
@@ -387,7 +387,7 @@ function exportar() {
 
 async function nuevaJornada() {
   if (!confirm('¿Limpiar todo e iniciar nueva jornada? No se puede deshacer.')) return;
-  J = { ...J, cierre:null, abierto:true, partidos:[], resultados:{}, participantes:[], numero:J.numero+1 };
+  J = { ...J, cierre:null, abierto:true, partidos:[], resultados:{}, participantes:[], numero:1 };
   try {
     await gasPost({ action:'nuevaJornada', data:{ ...J, participantes:undefined } });
     toast('✅ Nueva jornada iniciada','ok');
