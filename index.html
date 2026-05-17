@@ -420,7 +420,7 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
 // ════════════════════════════════════════════════════════════════
 // CONFIGURACIÓN — completar después de deployar el GAS
 // ════════════════════════════════════════════════════════════════
-const GAS = "https://script.google.com/macros/library/d/10q2cR-YO-ZvCukfjl5C0LwxQgqVD1HEoCYIfTne1cLl93iJ0-cerew8o/3"; // ← Reemplazar con tu URL de Apps Script
+const GAS = "https://script.google.com/macros/s/AKfycbyLBJCjc0OEsddTLVHk3YaCUSmR7yQbzaRzssmihxgoBG81x8PSLxpyrDRlXDzaYlKw/exec"; // ← Reemplazar con tu URL de Apps Script
 
 // ════════════════════════════════════════════════════════════════
 // ESTADO LOCAL
@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupForm();
   startCountdown();
   await loadJornada();
-  setInterval(autoRefreshTabla, 30000);
+  setInterval(autoRefreshTabla, 10000);
 });
 
 // ════════════════════════════════════════════════════════════════
