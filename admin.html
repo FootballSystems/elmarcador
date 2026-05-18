@@ -315,14 +315,14 @@ function renderResultados() {
     ? J.partidos.map((p,i)=>`
         <div class="rrow">
           <div class="rmatch">${i+1}. ${p.local} vs ${p.visitante}</div>
-          <input class="rinp" type="text" id="rr${i}" value="${J.resultados?.[i]||''}" placeholder="2-1" maxlength="5" inputmode="numeric">
+          <input class="rinp" type="text" id="rr${i}" value="${J.resultados?.[String(i)]||J.resultados?.[i]||''}" placeholder="2-1" maxlength="5" inputmode="numeric">
         </div>`).join('')
     : '<p style="color:var(--tx3);font-size:13px">Primero guardá los partidos en la pestaña Jornada.</p>';
 }
 
 async function saveResultados() {
   const resultados={};
-  J.partidos.forEach((_,i)=>{ const v=(document.getElementById(`rr${i}`)?.value||'').trim(); if(v) resultados[i]=v; });
+  J.partidos.forEach((_,i)=>{ const v=(document.getElementById(`rr${i}`)?.value||'').trim(); if(v) resultados[String(i)]=v; });
   J.resultados=resultados;
   try {
     const r = await gasPost({ action:'saveResultados', jornada:1, resultados });
