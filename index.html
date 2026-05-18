@@ -377,7 +377,7 @@ tbody td:nth-child(2){text-align:left;font-weight:500;font-size:13px}
         <h2>ACCESO A LA TABLA</h2>
         <p>Ingresá el código que recibiste al registrarte para ver las posiciones.</p>
         <div class="gate-inp">
-          <input type="text" id="gateCode" placeholder="EMJ1-XXXX" maxlength="9" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')verifyCode()">
+          <input type="text" id="gateCode" placeholder="EMJ-XXXX" maxlength="9" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')verifyCode()">
           <button class="btn btn-p" onclick="verifyCode()">ENTRAR</button>
         </div>
         <div class="gate-err" id="gateErr"></div>
