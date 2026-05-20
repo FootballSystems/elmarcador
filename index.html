@@ -448,14 +448,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 // CARGAR JORNADA
 // ════════════════════════════════════════════════════════════════
 async function loadJornada() {
-  // Render inmediato con defaults para que la página no espere
-  renderAll();
-  // Luego cargar datos reales del servidor
+  // Cargar caché inmediato si existe
+  const cached = sessionStorage.getItem('emJornada');
+  if (cached) {
+    try { J = { ...J, ...JSON.parse(cached) }; } catch(e) {}
+  }
+  renderAll(); // mostrar al instante con caché o defaults
+
+  // Cargar datos reales en segundo plano
   try {
     const r = await gasGet('getJornada');
     if (r.ok) {
       J = { ...J, ...r.data };
-      renderAll(); // actualizar con datos reales
+      sessionStorage.setItem('emJornada', JSON.stringify(r.data));
+      renderAll();
     }
   } catch(e) {
     showToast('Sin conexión — mostrando última configuración','err');
